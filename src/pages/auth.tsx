@@ -4,6 +4,8 @@ import { GetServerSideProps, GetServerSidePropsContext, GetStaticProps, NextPage
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useParams } from 'next/navigation';
+import { useAppDispatch } from "@/components/Hooks/useApp";
+import { setToken } from "@/store/token/token";
 
 export const getServerSideProps: GetServerSideProps = async ({ query }: GetServerSidePropsContext) => {
   const response = await axios.post(
@@ -14,32 +16,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }: GetServe
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }
   )
-  const data = response.data
-  // axios.post(
-  //   'https://www.reddit.com/api/v1/access_token',
-  //   `grant_type=authorization_code&code=${query.code}&redirect_uri=http://localhost:3000/auth`,
-  //   {
-  //     auth: { username: process.env.NEXT_PUBLIC_CLIENT_ID ? process.env.NEXT_PUBLIC_CLIENT_ID : '', password: '7gdUYpGN3MqdRwsVWzAxVAW8XzffdA' },
-  //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-  //   }
-  // )
-  //   .then(({ data }) => {
-  //     return {
-  //       props: {token: data['access_token']},
-  //       // redirect: {
-  //       //   destination: '/',
-  //       //   permanent: false,
-  //       // },
-  //      }
-  //   })
-  //   // .catch((error) => {
-  //   //   return {
-  //   //     props: {error: error}
-  //   //   }
-  //   // })
-    return {
-      props: {token: data['access_token']},
-    }
+  const data = response.data;
+
+  return {
+    props: {token: data['access_token']},
+  }
 }
 
 interface IAuthPageProps {
@@ -47,13 +28,13 @@ interface IAuthPageProps {
 }
 
 const AuthPage: NextPage<IAuthPageProps> = ({ token }) => {
-  console.log(token);
   const router = useRouter();
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    // if (!(user || loading)) {
-      // router.push('/');
-    // }
-  }, []);
+    dispatch(setToken(token));
+    router.push('/')
+  }, [token]);
 
   return (
     <p>Redirecting...</p>

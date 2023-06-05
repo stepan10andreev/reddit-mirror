@@ -4,8 +4,6 @@ import { Layout } from '@/components/Layout/Layout'
 import { Header } from '@/components/Header/Header'
 import { Content } from '@/components/Content/Content'
 import { CardList } from '@/components/CardList/CardList'
-import { useRouter } from 'next/router'
-
 
 export default function HomePage() {
   return (
