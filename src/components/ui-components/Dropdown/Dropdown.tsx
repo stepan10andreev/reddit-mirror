@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from './Dropdown.module.scss';
 
 interface IDropdownProps {
@@ -12,9 +12,9 @@ interface IDropdownProps {
 const NOOP = () => {};
 
 export const Dropdown: FC<IDropdownProps> = ({ button, children, isOpen, onClose = NOOP, onOpen = NOOP }) => {
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
-  React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
-  React.useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(isOpen);
+  useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
+  useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen]);
 
   const handleOpen = () => {
     if (isOpen === undefined) {
@@ -24,7 +24,7 @@ export const Dropdown: FC<IDropdownProps> = ({ button, children, isOpen, onClose
 
   return (
     <div className={styles.container}>
-      <div onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+      <div onClick={handleOpen}>
         { button }
       </div>
       {isDropdownOpen && (
