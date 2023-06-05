@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Layout } from '@/components/Layout/Layout'
 import { Header } from '@/components/Header/Header'
 import { Content } from '@/components/Content/Content'
+import { CardList } from '@/components/CardList/CardList'
 
 
 export default function HomePage() {
@@ -17,7 +18,7 @@ export default function HomePage() {
       <Layout>
         <Header />
         <Content>
-          Content
+          <CardList />
         </Content>
       </Layout>
     </>
