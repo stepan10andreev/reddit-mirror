@@ -3,6 +3,6 @@ import styles from './SearchBlock.module.scss';
 
 export const  SearchBlock: FC = () => {
   return (
-    <h1 className={styles.SearchBlock}>SearchBlock</h1>
+    <div className={styles.searchBlock}>SearchBlock</div>
   );
 }

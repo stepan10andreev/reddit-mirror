@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import { Layout } from '@/components/Layout/Layout'
 import { Header } from '@/components/Header/Header'
+import { Content } from '@/components/Content/Content'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function HomePage() {
   return (
@@ -17,6 +16,9 @@ export default function HomePage() {
       </Head>
       <Layout>
         <Header />
+        <Content>
+          Content
+        </Content>
       </Layout>
     </>
   )
