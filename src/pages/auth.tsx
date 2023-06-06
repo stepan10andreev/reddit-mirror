@@ -1,9 +1,7 @@
-'use client'
 import axios from "axios";
-import { GetServerSideProps, GetServerSidePropsContext, GetStaticProps, NextPage, Redirect } from "next";
+import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useParams } from 'next/navigation';
 import { useAppDispatch } from "@/components/Hooks/useApp";
 import { setToken } from "@/store/token/token";
 
@@ -17,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }: GetServe
     }
   )
   const data = response.data;
-
+  console.log(response)
   return {
     props: {token: data['access_token']},
   }
@@ -32,8 +30,10 @@ const AuthPage: NextPage<IAuthPageProps> = ({ token }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    localStorage.setItem('token', JSON.stringify(token));
     dispatch(setToken(token));
     router.push('/')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   return (

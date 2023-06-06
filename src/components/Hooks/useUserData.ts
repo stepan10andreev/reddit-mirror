@@ -9,9 +9,17 @@ interface IUserData {
 
 export const useUserData =  () => {
   const [userData, setUserData] = useState<IUserData>({});
-  const token = useAppSelector((state) => state.token);
-
+  const [tokenValue, setTokenValue] = useState<string>('');
+  // const token = useAppSelector((state) => state.token);
   useEffect(() => {
+    let token = '';
+    const localtoken =  localStorage.getItem('token');
+    if (localtoken) {
+      token = JSON.parse(localtoken);
+    }
+    if(!token) return
+    setTokenValue(token)
+
     const getUserData = async () => {
       const response = await axios.get('https://oauth.reddit.com/api/v1/me', {
         headers: { Authorization: `bearer ${token}` }
@@ -20,6 +28,6 @@ export const useUserData =  () => {
       setUserData({ name: data.name, iconImg: data.snoovatar_img})
     }
     getUserData();
-  }, [token])
+  }, [tokenValue])
   return userData
 }
