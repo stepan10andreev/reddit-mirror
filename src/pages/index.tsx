@@ -23,24 +23,23 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetSe
     }
   })
 
-  console.log(data)
+  // console.log(data)
 
   return {
     props: {postsData: data.data.children},
   }
 }
 
-// interface IPost {
-//   id: string;
-//   title: string;
-// }
+interface IPost {
+  data: ICardProps;
+}
 
 export interface IHomePageProps {
-  postsData: ICardProps[]
+  postsData: IPost[]
 }
 
 const HomePage: NextPage<IHomePageProps> = ({postsData}) => {
-  console.log(postsData)
+  // console.log(postsData)
   return (
     <>
       <Head>

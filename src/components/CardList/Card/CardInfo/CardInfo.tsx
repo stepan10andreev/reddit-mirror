@@ -1,22 +1,32 @@
 import { FC } from "react";
 import styles from './CardInfo.module.scss';
+import { getDate } from "@/utils/getDate";
 
-export const CardInfo: FC = () => {
+interface ICardInfoProps {
+  title: string;
+  author: string;
+  postLink: string;
+  createdMS: number;
+}
+
+
+export const CardInfo: FC<ICardInfoProps> = ({title, author, postLink, createdMS}) => {
+  // console.log(createdMS)
+
   return (
     <div className={styles.textContent}>
        <div className={styles.metaData}>
           <div className={styles.userLink}>
-            <img className={styles.avatar} src="https://i.ibb.co/SJkwNCH/avatar.jpg" alt="Avatar" />
-            <a href="#user-url" className={styles.username}>Владимир Петров</a>
+            Автор: <a href="#user-url" className={styles.username}> {author ? author : 'Автор неизвестен'}</a>
           </div>
           <span className={styles.createdAt}>
             <span className={styles.publishedLabel}>опубликовано </span>
-            5 часов назад
+              {getDate(createdMS)}
           </span>
         </div>
         <h2 className={styles.title}>
-          <a href="#post-url" className={styles.postLink}>
-            Следует отметить, что новая модель организационной деятельности Следует отметить, что новая модель организационной деятельности
+          <a href={postLink} className={styles.postLink}>
+            {title}
           </a>
         </h2>
     </div>

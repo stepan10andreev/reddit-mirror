@@ -9,23 +9,24 @@ export interface ICardProps {
   id?: string;
   title: string;
   author: string;
-  // avatarUrl: string;
-  thumbnail: string;
   num_comments: number;
   url: string;
   score: number;
+  created: number;
+  thumbnail: string;
 }
 // sr_detail/public_description
 // sr_detail/subscribers
 // sr_detail/created
 // sr_detail/display_name_prefixed
-export const Card: FC<ICardProps> = ({title, author, thumbnail, num_comments, url, score}) =>  {
+// media/scrubber_media_url
+export const Card: FC<ICardProps> = ({title, author, num_comments, url, score, created, thumbnail}) =>  {
   return (
     <li className={styles.card}>
-      <CardInfo />
-      <Preview />
+      <CardInfo title={title} author={author} postLink={url} createdMS={created}/>
+      <Preview previewImgUrl={thumbnail} />
       <ButtonMenu />
-      <Controls />
+      <Controls score={score} commentsCount={num_comments}/>
     </li>
   );
 }

@@ -1,10 +1,14 @@
 import { FC } from 'react';
 import styles from './Peview.module.scss';
 
-export const Preview: FC = () => {
+interface IPreviewProps {
+  previewImgUrl: string;
+}
+
+export const Preview: FC<IPreviewProps> = ({previewImgUrl}) => {
   return (
     <div className={styles.preview}>
-      <img className={styles.previewImg} src="https://i.ibb.co/7j4gmDg/Rectangle-14.jpg" alt="previewImg" />
+      <img className={styles.previewImg} src={previewImgUrl} alt="previewImg" />
     </div>
   );
 }
