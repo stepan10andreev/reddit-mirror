@@ -9,25 +9,32 @@ interface IUserData {
 
 export const useUserData =  () => {
   const [userData, setUserData] = useState<IUserData>({});
-  const [tokenValue, setTokenValue] = useState<string>('');
+  const [isLoading, setLoading] = useState(false);
+
   // const token = useAppSelector((state) => state.token);
+
   useEffect(() => {
+
     let token = '';
     const localtoken =  localStorage.getItem('token');
     if (localtoken) {
       token = JSON.parse(localtoken);
     }
     if(!token) return
-    setTokenValue(token)
 
+    setLoading(true);
     const getUserData = async () => {
       const response = await axios.get('https://oauth.reddit.com/api/v1/me', {
         headers: { Authorization: `bearer ${token}` }
       })
       const data = response.data;
       setUserData({ name: data.name, iconImg: data.snoovatar_img})
+      setLoading(false);
     }
     getUserData();
-  }, [tokenValue])
-  return userData
+  }, [])
+  return {
+    userData,
+    isLoading
+  }
 }

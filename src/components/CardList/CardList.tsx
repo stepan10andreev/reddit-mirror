@@ -1,11 +1,30 @@
 import { FC } from "react";
 import styles from './CardList.module.scss';
-import { Card } from "./Card/Card";
+import { Card, ICardProps } from "./Card/Card";
+import { IHomePageProps } from "@/pages";
 
-export const CardList: FC = () =>  {
+interface ICardListsProps extends IHomePageProps {}
+
+export const CardList: FC<ICardListsProps> = ({ postsData }) =>  {
   return (
     <ul className={styles.cardsList}>
-      <Card />
+      {postsData.length === 0 && (
+         <div role='alert' style={{textAlign: 'center'}}>
+         Нет ни одного поста
+       </div>
+      )}
+
+      {postsData.map((post) => (
+        <Card
+          key={post.id}
+          title={post.title}
+          url={post.url}
+          author={post.author}
+          thumbnail={post.thumbnail}
+          score={post.score}
+          num_comments={post.num_comments}
+        />
+      ))}
     </ul>
   );
 }

@@ -4,18 +4,19 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useAppDispatch } from "@/components/Hooks/useApp";
 import { setToken } from "@/store/token/token";
+import { setCookie } from "cookies-next";
 
-export const getServerSideProps: GetServerSideProps = async ({ query }: GetServerSidePropsContext) => {
+export const getServerSideProps: GetServerSideProps = async ({ query, req, res }: GetServerSidePropsContext) => {
   const response = await axios.post(
     'https://www.reddit.com/api/v1/access_token',
     `grant_type=authorization_code&code=${query.code}&redirect_uri=http://localhost:3000/auth`,
     {
-      auth: { username: process.env.NEXT_PUBLIC_CLIENT_ID ? process.env.NEXT_PUBLIC_CLIENT_ID : '', password: '7gdUYpGN3MqdRwsVWzAxVAW8XzffdA' },
+      auth: { username: process.env.NEXT_PUBLIC_CLIENT_ID ? process.env.NEXT_PUBLIC_CLIENT_ID : '', password: process.env.PASSWORD_FOR_TOKEN ? process.env.PASSWORD_FOR_TOKEN : ''},
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     }
   )
   const data = response.data;
-  console.log(response)
+  setCookie('token', data['access_token'], { req, res, maxAge: 60 * 60 });
   return {
     props: {token: data['access_token']},
   }

@@ -4,8 +4,43 @@ import { Layout } from '@/components/Layout/Layout'
 import { Header } from '@/components/Header/Header'
 import { Content } from '@/components/Content/Content'
 import { CardList } from '@/components/CardList/CardList'
+import { GetServerSideProps, GetServerSidePropsContext, NextPage } from 'next'
+import axios from 'axios'
+import { useAppSelector } from '@/components/Hooks/useApp'
+import { getCookie } from 'cookies-next'
+import { ICardProps } from '@/components/CardList/Card/Card'
 
-export default function HomePage() {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetServerSidePropsContext) => {
+  const token = getCookie('token', { req, res })
+  if (!token) return {
+    props: {postsData: []}
+  };
+  const {data} = await axios.get('https://oauth.reddit.com/r/all/hot.json?sr_detail=true', {
+    headers: { Authorization: `bearer ${token}` },
+    params: {
+      // limit: 10,
+      // after: afterNext,
+    }
+  })
+
+  console.log(data)
+
+  return {
+    props: {postsData: data.data.children},
+  }
+}
+
+// interface IPost {
+//   id: string;
+//   title: string;
+// }
+
+export interface IHomePageProps {
+  postsData: ICardProps[]
+}
+
+const HomePage: NextPage<IHomePageProps> = ({postsData}) => {
+  console.log(postsData)
   return (
     <>
       <Head>
@@ -17,9 +52,12 @@ export default function HomePage() {
       <Layout>
         <Header />
         <Content>
-          <CardList />
+          <CardList postsData={postsData}/>
         </Content>
       </Layout>
     </>
   )
 }
+
+
+export default HomePage
