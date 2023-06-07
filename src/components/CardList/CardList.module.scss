@@ -1,5 +1,9 @@
 @media all and (min-width: 1024px) {
   .cardsList {
     padding: 40px 0;
+
+    & > li:not(:last-child) {
+      margin-bottom: 40px;
+    }
   }
 }

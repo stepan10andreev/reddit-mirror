@@ -18,7 +18,7 @@
 
 @media all and (min-width: 1024px) {
   .card {
-    background-color: transparent;
+    background-color: var(--greyEC);
     flex-flow: row nowrap;
     max-height: 107px;
     padding: 0 40px;
