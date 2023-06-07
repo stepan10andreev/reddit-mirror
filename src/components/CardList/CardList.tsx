@@ -22,10 +22,12 @@ export const CardList: FC<ICardListsProps> = ({ postsData }) =>  {
           title={post.data.title}
           url={post.data.url}
           thumbnail={post.data.thumbnail}
+          permalink={post.data.permalink}
           author={post.data.author}
           score={post.data.score}
           num_comments={post.data.num_comments}
           created={post.data.created}
+          media={post.data.media}
         />
       ))}
     </ul>

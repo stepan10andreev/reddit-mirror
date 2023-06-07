@@ -5,14 +5,13 @@ import { getDate } from "@/utils/getDate";
 interface ICardInfoProps {
   title: string;
   author: string;
-  postLink: string;
+  permalink: string;
   createdMS: number;
 }
 
 
-export const CardInfo: FC<ICardInfoProps> = ({title, author, postLink, createdMS}) => {
-  // console.log(createdMS)
-
+export const CardInfo: FC<ICardInfoProps> = ({title, author, permalink, createdMS}) => {
+  const postUrl = "https://www.reddit.com/" + permalink;
   return (
     <div className={styles.textContent}>
        <div className={styles.metaData}>
@@ -25,7 +24,7 @@ export const CardInfo: FC<ICardInfoProps> = ({title, author, postLink, createdMS
           </span>
         </div>
         <h2 className={styles.title}>
-          <a href={postLink} className={styles.postLink}>
+          <a href={postUrl} className={styles.postLink}>
             {title}
           </a>
         </h2>
