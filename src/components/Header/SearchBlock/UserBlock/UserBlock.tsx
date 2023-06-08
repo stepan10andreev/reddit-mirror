@@ -1,10 +1,10 @@
-'use client'
 import { FC, Suspense } from 'react';
 import styles from './UserBlock.module.scss';
 import { Break } from '@/components/ui-components/Break/Break';
 import { IconAnon } from '@/components/ui-components/Icon/Icons/AnonIcon';
 import { EColor, Text } from '@/components/ui-components/Text/Text';
 import { useUserData } from '@/components/Hooks/useUserData';
+import Image from 'next/image';
 
 interface IUserBlockProps {
   avatarSrc?: string;
@@ -13,8 +13,15 @@ interface IUserBlockProps {
 
 const AUTH_URL = `https://www.reddit.com/api/v1/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&response_type=code&state=random_string&redirect_uri=http://localhost:3000/auth&duration=permanent&scope=read submit identity`;
 
+const imageStyle = {
+  width: '100%',
+  height: '100%',
+  'object-fit': 'cover',
+  'border-radius': '100%',
+};
+
 export const UserBlock: FC<IUserBlockProps> = ({ avatarSrc, username}) => {
-  const { userData, isLoading }= useUserData();
+  const { userData, isLoading } = useUserData();
 
   return (
     <a
@@ -23,7 +30,8 @@ export const UserBlock: FC<IUserBlockProps> = ({ avatarSrc, username}) => {
     >
       <div className={styles.avatarBox}>
         {userData.iconImg
-          ? <img src={userData.iconImg} alt='user avatar' className={styles.avatarImage} />
+          ?  <img src={userData.iconImg} alt='user avatar' className={styles.avatarImage} />
+
           : <IconAnon />
         }
       </div>

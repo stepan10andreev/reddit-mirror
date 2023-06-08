@@ -16,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, req, res }
     }
   )
   const data = response.data;
-  setCookie('token', data['access_token'], { req, res, maxAge: 60 * 60 });
+  setCookie('token', data['access_token'], { req, res, /*maxAge: 60 * 60 */});
   return {
     props: {token: data['access_token']},
   }

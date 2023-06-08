@@ -6,7 +6,7 @@ import { IHomePageProps } from "@/pages";
 interface ICardListsProps extends IHomePageProps {}
 
 export const CardList: FC<ICardListsProps> = ({ postsData }) =>  {
-  console.log(postsData)
+  // console.log(postsData)
   return (
     <ul className={styles.cardsList}>
       {postsData.length === 0 && (
@@ -18,16 +18,16 @@ export const CardList: FC<ICardListsProps> = ({ postsData }) =>  {
 
       {postsData.map((post) => (
         <Card
-          key={post.data.id}
-          title={post.data.title}
-          url={post.data.url}
-          thumbnail={post.data.thumbnail}
-          permalink={post.data.permalink}
-          author={post.data.author}
-          score={post.data.score}
-          num_comments={post.data.num_comments}
-          created={post.data.created}
-          media={post.data.media}
+          key={post.id}
+          title={post.title}
+          url={post.url}
+          thumbnail={post.thumbnail}
+          permalink={post.permalink}
+          author={post.author}
+          score={post.score}
+          num_comments={post.num_comments}
+          created={post.created}
+          media={post.media}
         />
       ))}
     </ul>

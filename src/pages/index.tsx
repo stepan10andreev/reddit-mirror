@@ -9,11 +9,20 @@ import axios from 'axios'
 import { useAppSelector } from '@/components/Hooks/useApp'
 import { getCookie } from 'cookies-next'
 import { ICardProps } from '@/components/CardList/Card/Card'
+import { getOptimizatedData } from '@/utils/getOptimizatedData'
+
+const props = ['id', 'title', 'thumbnail', 'permalink', 'author', 'score', 'num_comments', 'created', 'media']
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetServerSidePropsContext) => {
   const token = getCookie('token', { req, res })
+  console.log(token)
+
   if (!token) return {
-    props: {postsData: []}
+    props: {postsData: []},
+    // redirect: {
+    //   destination: '/auth',
+    //   permanent: false,
+    // },
   };
   const {data} = await axios.get('https://oauth.reddit.com/r/all/hot.json?sr_detail=true', {
     headers: { Authorization: `bearer ${token}` },
@@ -22,24 +31,26 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetSe
       // after: afterNext,
     }
   })
-
-  // console.log(data)
+  const postsData = data.data.children.map((item: { data: any }) => item.data)
+  const optimizatedData = getOptimizatedData(postsData, props)
 
   return {
-    props: {postsData: data.data.children},
+    props: {postsData: optimizatedData},
   }
 }
 
-interface IPost {
-  data: ICardProps;
-}
+// interface IPost {
+//   data: ICardProps;
+// }
 
 export interface IHomePageProps {
-  postsData: IPost[]
+  postsData: ICardProps[]
 }
 
+
 const HomePage: NextPage<IHomePageProps> = ({postsData}) => {
-  // console.log(postsData)
+
+  console.log(postsData)
   return (
     <>
       <Head>

@@ -14,10 +14,9 @@ const imageStyle = {
 };
 
 export const Preview: FC<IPreviewProps> = ({previewImgUrl, media}) => {
-  console.log(media)
   return (
     <div className={styles.preview}>
-      {((media === null) && (previewImgUrl != 'default')) ? (
+      {((media === null) && (previewImgUrl.includes('http'))) ? (
         <Image src={previewImgUrl} width={200} height={110} alt="preview image" style={imageStyle}/>
       ) : (
         <Image src='/media-1.jpg' width={200} height={110} alt="media-post" style={imageStyle}/>
