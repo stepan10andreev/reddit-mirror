@@ -11,7 +11,7 @@ interface ICardInfoProps {
 
 
 export const CardInfo: FC<ICardInfoProps> = ({title, author, permalink, createdMS}) => {
-  const postUrl = "https://www.reddit.com/" + permalink;
+  const postUrl = "https://www.reddit.com" + permalink;
   return (
     <div className={styles.textContent}>
        <div className={styles.metaData}>
