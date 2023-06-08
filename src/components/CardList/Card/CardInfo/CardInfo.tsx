@@ -1,17 +1,20 @@
 import { FC } from "react";
 import styles from './CardInfo.module.scss';
 import { getDate } from "@/utils/getDate";
+import { Title } from "./Title/Title";
 
 interface ICardInfoProps {
   title: string;
   author: string;
   permalink: string;
   createdMS: number;
+  id: string;
 }
 
 
-export const CardInfo: FC<ICardInfoProps> = ({title, author, permalink, createdMS}) => {
+export const CardInfo: FC<ICardInfoProps> = ({title, author, permalink, createdMS, id}) => {
   const postUrl = "https://www.reddit.com" + permalink;
+  // console.log(id)
   return (
     <div className={styles.textContent}>
        <div className={styles.metaData}>
@@ -23,11 +26,12 @@ export const CardInfo: FC<ICardInfoProps> = ({title, author, permalink, createdM
               {getDate(createdMS)}
           </span>
         </div>
-        <h2 className={styles.title}>
+        <Title title={title} permalink={permalink} id={id} />
+        {/* <h2 className={styles.title}>
           <a href={postUrl} className={styles.postLink}>
             {title}
           </a>
-        </h2>
+        </h2> */}
     </div>
   );
 }

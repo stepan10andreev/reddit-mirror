@@ -6,7 +6,7 @@ import { ButtonMenu } from "./ButtonMenu/ButtonMenu";
 import { Controls } from "./Controls/Controls";
 
 export interface ICardProps {
-  id?: string;
+  id: string;
   title: string;
   author: string;
   num_comments: number;
@@ -22,10 +22,11 @@ export interface ICardProps {
 // sr_detail/created
 // sr_detail/display_name_prefixed
 // media/scrubber_media_url
-export const Card: FC<ICardProps> = ({title, author, num_comments, permalink, score, created, thumbnail, media}) =>  {
+export const Card: FC<ICardProps> = ({title, author, num_comments, permalink, score, created, thumbnail, media, id}) =>  {
+
   return (
     <li className={styles.card}>
-      <CardInfo title={title} author={author} permalink={permalink} createdMS={created}/>
+      <CardInfo title={title} author={author} permalink={permalink} createdMS={created} id={id}/>
       <Preview previewImgUrl={thumbnail} media={media}/>
       <ButtonMenu />
       <Controls score={score} commentsCount={num_comments}/>

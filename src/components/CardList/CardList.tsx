@@ -3,7 +3,10 @@ import styles from './CardList.module.scss';
 import { Card, ICardProps } from "./Card/Card";
 import { IHomePageProps } from "@/pages";
 
-interface ICardListsProps extends IHomePageProps {}
+// interface ICardListsProps extends IHomePageProps {
+//   postsData: ICardProps[];
+// }
+type ICardListsProps = Pick<IHomePageProps, 'postsData'>
 
 export const CardList: FC<ICardListsProps> = ({ postsData }) =>  {
   // console.log(postsData)
@@ -28,6 +31,7 @@ export const CardList: FC<ICardListsProps> = ({ postsData }) =>  {
           num_comments={post.num_comments}
           created={post.created}
           media={post.media}
+          id={post.id}
         />
       ))}
     </ul>

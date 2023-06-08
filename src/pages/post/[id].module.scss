@@ -1,0 +1,40 @@
+.post {
+  padding: 15px 30px;
+  margin: 0 auto;
+  display: flex;
+  // flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  max-width: 1024px;
+  gap: 30px;
+
+  & .postWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 60%;
+  }
+
+  & .title {
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.5rem;
+    text-align: center;
+  }
+  & .mediaWrapper {
+    width: 100%;
+  }
+
+  & .media {
+    width: 100%;
+  }
+
+  & .subredditInfo {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+  }
+}
+

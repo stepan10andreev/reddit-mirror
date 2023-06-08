@@ -32,10 +32,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetSe
     }
   })
   const postsData = data.data.children.map((item: { data: any }) => item.data)
+  console.log(postsData)
   const optimizatedData = getOptimizatedData(postsData, props)
 
   return {
-    props: {postsData: optimizatedData},
+    props: {postsData: optimizatedData, data: postsData},
   }
 }
 
@@ -44,13 +45,14 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetSe
 // }
 
 export interface IHomePageProps {
-  postsData: ICardProps[]
+  postsData: ICardProps[];
+  data: any[]
 }
 
 
-const HomePage: NextPage<IHomePageProps> = ({postsData}) => {
+const HomePage: NextPage<IHomePageProps> = ({postsData, data}) => {
 
-  console.log(postsData)
+  console.log(data)
   return (
     <>
       <Head>
