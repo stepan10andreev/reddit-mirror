@@ -3,6 +3,6 @@ import styles from './ThreadTitle.module.scss';
 
 export const  ThreadTitle: FC = () => {
   return (
-    <h1 className={styles.threadTitle}>ThreadTitle</h1>
+    <h1 className={styles.threadTitle}>Личный кабинет</h1>
   );
 }

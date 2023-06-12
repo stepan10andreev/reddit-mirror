@@ -3,9 +3,10 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  width: 60%;
+  width: 100%;
   border-radius: 5px;
   background-color: var(--white);
+
   & .title {
     padding: 10px;
     margin: 0;
@@ -28,6 +29,7 @@
     width: 100%;
     background-color: var(--greyF3);
     border-radius: 5px;
+    word-break: break-word;
   }
 
   & img {
@@ -46,13 +48,16 @@
     color: #c10000;
     background-color: var(--greyF3);
   }
+
 }
 
 .link {
   padding: 5px;
+  align-self: cente;
   text-align: center;
   font-weight: 600;
   width: 100%;
+  max-width: 250px;
   border: 3px solid var(--green);
   border-radius: 5px;
   background: transparent;
@@ -62,4 +67,12 @@
     background-color: var(--green);
   }
 
+}
+
+
+
+@media all and (min-width: 756px) {
+  .postInfo {
+    width: 60%;
+  }
 }

@@ -20,7 +20,11 @@ export const  SubredditInfoCard: FC<ISubredditInfoCard> = ({subredditData, prefi
            </div>
           )}
           <div className={styles.subredditName}>
-            <Image src={subredditData.icon_img} width={30} height={30} alt="subreddit_icon_image"/>
+            {subredditData.icon_img && (
+              <div className={styles.bannerImg}>
+              <Image src={subredditData.icon_img} width={30} height={30} alt="subreddit_icon_image"/>
+            </div>
+            )}
             <h2 className={styles.subredditTitle}>{subredditData.title}</h2>
           </div>
           <small className={styles.prefix}>{prefix}</small>

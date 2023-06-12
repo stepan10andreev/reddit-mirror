@@ -8,12 +8,9 @@ import { SortBlock } from './SortBlock/SortBlock';
 export const Header: FC = () => {
   return (
     <header className={styles.header}>
-
-
-        <SearchBlock />
-
+      <SearchBlock />
       <ThreadTitle />
-      <SortBlock />
+      {/* <SortBlock /> */}
     </header>
   );
 }

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "@/components/Hooks/useApp";
 import { setToken } from "@/store/token/token";
 import { setCookie } from "cookies-next";
+import { BounceLoader } from "react-spinners";
 
 export const getServerSideProps: GetServerSideProps = async ({ query, req, res }: GetServerSidePropsContext) => {
   const response = await axios.post(
@@ -38,7 +39,9 @@ const AuthPage: NextPage<IAuthPageProps> = ({ token }) => {
   }, [token]);
 
   return (
-    <p>Redirecting...</p>
+    <div style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%'}}>
+      <BounceLoader color="#CC6633" size={80}/>
+    </div>
   )
 }
 

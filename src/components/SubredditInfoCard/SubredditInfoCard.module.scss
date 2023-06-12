@@ -1,13 +1,11 @@
 .subredditInfo {
   padding: 30px 10px;
   position: relative;
-  align-self: flex-start;
   display: flex;
   flex-direction: column;
-  // flex-grow: 1;
   align-items: center;
   height: 100%;
-  width: 40%;
+  width: 100%;
   border-radius: 5px;
   background-color: var(--white);
   overflow: hidden;
@@ -55,6 +53,7 @@
   }
 
   & .bannerImg {
+    width: 100%;
     & img {
       width: 100%;
     }
@@ -73,5 +72,13 @@
     &:hover {
       background-color: var(--orange);
     }
+  }
+}
+
+
+
+@media all and (min-width: 756px) {
+  .subredditInfo {
+    width: 40%;
   }
 }

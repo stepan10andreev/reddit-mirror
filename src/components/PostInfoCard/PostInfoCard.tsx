@@ -9,7 +9,6 @@ interface IPostInfoCard {
 
 export const  PostInfoCard: FC<IPostInfoCard> = ({postData}) => {
   const postUrl = "https://www.reddit.com" + postData.permalink;
-  console.log(postData)
   return (
     <div className={styles.postInfo}>
       <h1 className={styles.title}>
@@ -19,7 +18,7 @@ export const  PostInfoCard: FC<IPostInfoCard> = ({postData}) => {
           <video className={styles.media} src={postData.media.reddit_video.scrubber_media_url} autoPlay></video>
       )}
       {postData.thumbnail.includes('http') ? (
-        <Image src={postData.thumbnail} width={200} height={110} alt="preview image"/>
+        <Image src={postData.thumbnail} width={200} height={110} alt="post image" onError={(e) => console.error(e.target)}/>
       ) : (
         <div className={styles.infoMediaBlock}>See more on Reddit at the link below</div>
       )}

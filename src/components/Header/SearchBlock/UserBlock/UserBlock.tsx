@@ -5,6 +5,7 @@ import { IconAnon } from '@/components/ui-components/Icon/Icons/AnonIcon';
 import { EColor, Text } from '@/components/ui-components/Text/Text';
 import { useUserData } from '@/components/Hooks/useUserData';
 import Image from 'next/image';
+import { BeatLoader } from 'react-spinners';
 
 interface IUserBlockProps {
   avatarSrc?: string;
@@ -38,7 +39,8 @@ export const UserBlock: FC<IUserBlockProps> = ({ avatarSrc, username}) => {
       <div className={styles.username}>
         <Break size={12} />
         {isLoading ? (
-            <Text size={20} color={EColor.gray99}>Загрузка...</Text>
+            <BeatLoader color="#CC6633" />
+            // <Text size={20} color={EColor.gray99}>Загрузка...</Text>
         ) : (
             <Text size={20} color={username ? EColor.black : EColor.gray99}>{userData.name || 'Аноним'}</Text>
         )}

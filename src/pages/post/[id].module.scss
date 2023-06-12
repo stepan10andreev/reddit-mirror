@@ -1,12 +1,22 @@
 .post {
   padding: 15px 30px;
   margin: 0 auto;
+  margin-top: 10%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   justify-items: center;
-  max-width: 1024px;
   gap: 30px;
+  max-width: 1400px;
   border-radius: 5px;
   background-color: var(--greyD9);
 }
+
+
+@media all and (min-width: 756px) {
+  .post  {
+    flex-direction: row;
+  }
+}
+

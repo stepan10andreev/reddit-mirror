@@ -14,12 +14,13 @@ export const useUserData =  () => {
   // const token = useAppSelector((state) => state.token);
 
   useEffect(() => {
-
     let token = '';
+
     const localtoken =  localStorage.getItem('token');
     if (localtoken) {
       token = JSON.parse(localtoken);
     }
+
     if(!token) return;
 
     setLoading(true);
