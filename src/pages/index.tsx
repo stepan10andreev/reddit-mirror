@@ -10,6 +10,10 @@ import { useAppSelector } from '@/components/Hooks/useApp'
 import { getCookie } from 'cookies-next'
 import { ICardProps } from '@/components/CardList/Card/Card'
 import { getOptimizatedData } from '@/utils/getOptimizatedData'
+import { Modal } from '@/components/ui-components/Modal/Modal'
+import { useRouter } from 'next/router'
+import { PostInfoCard } from '@/components/PostInfoCard/PostInfoCard'
+import { SubredditInfoCard } from '@/components/SubredditInfoCard/SubredditInfoCard'
 
 const props = ['id', 'title', 'thumbnail', 'permalink', 'author', 'score', 'num_comments', 'created', 'media']
 
@@ -51,8 +55,6 @@ export interface IHomePageProps {
 
 
 const HomePage: NextPage<IHomePageProps> = ({postsData, data}) => {
-
-  console.log(data)
   return (
     <>
       <Head>

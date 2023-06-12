@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, FC, ReactNode } from 'react';
-import ReactDOM from 'react-dom';
-import styles from './Post.module.scss';
+import React, { useEffect, useRef, FC, ReactNode, useState } from 'react';
+import { createPortal } from 'react-dom';
+import styles from './Modal.module.scss';
 import { useRouter } from "next/router";
 
 interface IModal {
@@ -9,10 +9,16 @@ interface IModal {
 }
 
 export const Modal: FC<IModal> = ({onClose, children}) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const router = useRouter();
+  const [mounted, setMounted] = useState(false)
+
 
   useEffect(() => {
+    ref.current = document.querySelector<HTMLDivElement>("#modal_root");
+
+    setMounted(true);
+
     function handleClick(event: MouseEvent) {
       if (event.target instanceof Node && !ref.current?.contains(event.target)) {
         router.push('/')
@@ -27,12 +33,7 @@ export const Modal: FC<IModal> = ({onClose, children}) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const node = document.querySelector('#modal_root');
-  if (!node) return null;
-
-  return ReactDOM.createPortal((
-    <div className={styles.modal} ref={ref}>
-      {children}
-    </div>
-  ), node);
+  return (mounted && ref.current) ? createPortal(<div className={styles.modal}>{children}</div>, ref.current) : null
 }
+
+

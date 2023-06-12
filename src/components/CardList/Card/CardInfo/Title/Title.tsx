@@ -8,22 +8,35 @@ interface Props {
   id: string;
 }
 
-// можно открыть модальное окно здесь, но тогда потеряется SSR засчет того что компонент станет клиентским (испльзование хуков)
-// поэтому перенаправляем на страницу с информацией о посте, где уже есть функция открытия модального окна
-
 export const Title: FC<Props> = ({title, permalink, id}) => {
   // const [isModalOpened, setIsModalOpened] = useState(false);
 
   return (
     <h2 className={styles.title} >
-          <Link href={`/post/${id}`} className={styles.postLink}>
+          <Link
+            href={`/post/${id}`}
+            className={styles.postLink}
+          >
             {title}
           </Link>
-
-          {/* {isModalOpened && (
-            <Post />
-          )} */}
     </h2>
   );
 }
 
+
+
+// export const Title: FC<Props> = ({title, permalink, id}) => {
+//   // const [isModalOpened, setIsModalOpened] = useState(false);
+
+//   return (
+//     <h2 className={styles.title} >
+//           <Link
+//             href={`/?post=${id}`}
+//             as={`/post/${id}`}
+//             className={styles.postLink}
+//           >
+//             {title}
+//           </Link>
+//     </h2>
+//   );
+// }

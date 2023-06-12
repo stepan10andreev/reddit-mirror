@@ -1,8 +1,34 @@
 import { FC } from 'react';
-import styles from './ThreadTitle.module.scss';
+import styles from './PostInfoCard.module.scss';
+import Image from 'next/image';
+import { IPostData } from '@/pages/post/[id]';
 
-export const  ThreadTitle: FC = () => {
+interface IPostInfoCard {
+  postData: IPostData
+}
+
+export const  PostInfoCard: FC<IPostInfoCard> = ({postData}) => {
+  const postUrl = "https://www.reddit.com" + postData.permalink;
+  console.log(postData)
   return (
-    <h1 className={styles.threadTitle}>ThreadTitle</h1>
+    <div className={styles.postInfo}>
+      <h1 className={styles.title}>
+        {postData.title}
+      </h1>
+      {postData.media != null && (
+          <video className={styles.media} src={postData.media.reddit_video.scrubber_media_url} autoPlay></video>
+      )}
+      {postData.thumbnail.includes('http') ? (
+        <Image src={postData.thumbnail} width={200} height={110} alt="preview image"/>
+      ) : (
+        <div className={styles.infoMediaBlock}>See more on Reddit at the link below</div>
+      )}
+      {postData.selftext.length > 0 && (
+        <p className={styles.description}>{postData.selftext}</p>
+      )}
+      <a href={postUrl} className={styles.link}>
+        Link to this post on Reddit
+      </a>
+    </div>
   );
 }
