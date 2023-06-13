@@ -35,6 +35,11 @@
     flex: 0 0;
   }
 
+  .card div:nth-child(1) {
+    flex: 0 0;
+    flex-basis: 672px;
+  }
+
   .card div:nth-child(2) {
     flex: 0 0;
     flex-basis: 190px;
