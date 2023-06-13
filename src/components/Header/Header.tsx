@@ -1,8 +1,7 @@
-import { FC, Suspense } from 'react';
+import { FC } from 'react';
 import styles from './Header.module.scss';
 import { SearchBlock } from './SearchBlock/SearchBlock';
 import { ThreadTitle } from './ThreadTitle/ThreadTitle';
-import { SortBlock } from './SortBlock/SortBlock';
 
 
 export const Header: FC = () => {

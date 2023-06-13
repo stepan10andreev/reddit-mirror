@@ -1,4 +1,4 @@
-import React, { useState, FC } from 'react';
+import React, { FC } from 'react';
 import styles from './Title.module.scss';
 import Link from 'next/link';
 

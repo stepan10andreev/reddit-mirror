@@ -1,15 +1,11 @@
 import { FC } from "react";
 import styles from './CardList.module.scss';
-import { Card, ICardProps } from "./Card/Card";
+import { Card } from "./Card/Card";
 import { IHomePageProps } from "@/pages";
 
-// interface ICardListsProps extends IHomePageProps {
-//   postsData: ICardProps[];
-// }
 type ICardListsProps = Pick<IHomePageProps, 'postsData'>
 
 export const CardList: FC<ICardListsProps> = ({ postsData }) =>  {
-  // console.log(postsData)
   return (
     <ul className={styles.cardsList}>
       {postsData.length === 0 && (

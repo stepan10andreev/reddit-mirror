@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styles from './SubredditInfoCard.module.scss';
 import Image from 'next/image';
-import { IPostData, ISubredditData } from '@/pages/post/[id]';
+import { ISubredditData } from '@/pages/post/[id]';
 
 interface ISubredditInfoCard {
   subredditData: ISubredditData,
@@ -10,7 +10,7 @@ interface ISubredditInfoCard {
 
 export const  SubredditInfoCard: FC<ISubredditInfoCard> = ({subredditData, prefix}) => {
   const subredditUrl = "https://www.reddit.com" + subredditData.url;
-  console.log(subredditData)
+
   return (
     <div className={styles.subredditInfo}>
           <h3 className={styles.heading}>About Community</h3>

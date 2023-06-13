@@ -6,7 +6,6 @@ interface IControlsProps {
   commentsCount?: number;
 }
 
-
 export const Controls: FC<IControlsProps> = ({score, commentsCount}) => {
   return (
     <div className={styles.controls}>

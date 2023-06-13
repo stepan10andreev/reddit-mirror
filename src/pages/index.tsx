@@ -14,14 +14,9 @@ const props = ['id', 'title', 'thumbnail', 'permalink', 'author', 'score', 'num_
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetServerSidePropsContext) => {
   const token = getCookie('token', { req, res })
-  // console.log(token)
 
   if (!token) return {
     props: {postsData: []},
-    // redirect: {
-    //   destination: '/auth',
-    //   permanent: false,
-    // },
   };
   const {data} = await axios.get('https://oauth.reddit.com/r/all/hot.json?sr_detail=true', {
     headers: { Authorization: `bearer ${token}` },
@@ -31,7 +26,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetSe
     }
   })
   const postsData = data.data.children.map((item: { data: any }) => item.data)
-  // console.log(postsData)
+
   const optimizatedData = getOptimizatedData(postsData, props)
 
   return {

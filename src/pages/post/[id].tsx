@@ -2,12 +2,10 @@ import { getOptimizatedData } from "@/utils/getOptimizatedData";
 import axios from "axios";
 import { getCookie } from "cookies-next";
 import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
-import { useRouter } from "next/router";
-import Image from 'next/image';
 import styles from './[id].module.scss';
 import { PostInfoCard } from "@/components/PostInfoCard/PostInfoCard";
 import { SubredditInfoCard } from "@/components/SubredditInfoCard/SubredditInfoCard";
-import { Modal } from "@/components/ui-components/Modal/Modal";
+import { GoHomeBtn } from "@/components/ui-components/GoHomeBtn/GoHomeBtn";
 
 const postProps = ['title', 'thumbnail', 'permalink', 'author', 'media', 'subreddit_name_prefixed', 'selftext']
 const subredditProps = ['title', 'public_description', 'url', 'icon_img', 'banner_img', 'subscribers']
@@ -70,6 +68,8 @@ export const PostPage: NextPage<IPostPageProps>  = ({postData, subredditData}) =
       <PostInfoCard postData={postData}/>
 
       <SubredditInfoCard subredditData={subredditData} prefix={postData.subreddit_name_prefixed}/>
+
+      <GoHomeBtn />
     </div>
   )
 }

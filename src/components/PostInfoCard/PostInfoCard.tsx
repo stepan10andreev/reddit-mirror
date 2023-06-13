@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import styles from './PostInfoCard.module.scss';
 import Image from 'next/image';
 import { IPostData } from '@/pages/post/[id]';
@@ -8,6 +8,7 @@ interface IPostInfoCard {
 }
 
 export const  PostInfoCard: FC<IPostInfoCard> = ({postData}) => {
+  const [imgError, setImgError] = useState(false)
   const postUrl = "https://www.reddit.com" + postData.permalink;
   return (
     <div className={styles.postInfo}>
@@ -17,8 +18,8 @@ export const  PostInfoCard: FC<IPostInfoCard> = ({postData}) => {
       {postData.media != null && (
           <video className={styles.media} src={postData.media.reddit_video.scrubber_media_url} autoPlay></video>
       )}
-      {postData.thumbnail.includes('http') ? (
-        <Image src={postData.thumbnail} width={200} height={110} alt="post image" onError={(e) => console.error(e.target)}/>
+      {(postData.thumbnail.includes('http') && !imgError) ? (
+        <Image src={postData.thumbnail} width={200} height={110} alt="post image" onError={(e) => setImgError(true)}/>
       ) : (
         <div className={styles.infoMediaBlock}>See more on Reddit at the link below</div>
       )}

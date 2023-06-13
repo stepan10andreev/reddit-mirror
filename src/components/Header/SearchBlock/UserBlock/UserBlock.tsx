@@ -1,10 +1,9 @@
-import { FC, Suspense } from 'react';
+import { FC } from 'react';
 import styles from './UserBlock.module.scss';
 import { Break } from '@/components/ui-components/Break/Break';
 import { IconAnon } from '@/components/ui-components/Icon/Icons/AnonIcon';
 import { EColor, Text } from '@/components/ui-components/Text/Text';
 import { useUserData } from '@/components/Hooks/useUserData';
-import Image from 'next/image';
 import { BeatLoader } from 'react-spinners';
 
 interface IUserBlockProps {
@@ -31,6 +30,7 @@ export const UserBlock: FC<IUserBlockProps> = ({ avatarSrc, username}) => {
     >
       <div className={styles.avatarBox}>
         {userData.iconImg
+          // eslint-disable-next-line @next/next/no-img-element
           ?  <img src={userData.iconImg} alt='user avatar' className={styles.avatarImage} />
 
           : <IconAnon />

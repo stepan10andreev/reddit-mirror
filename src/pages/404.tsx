@@ -11,5 +11,4 @@ const NotFoundPage: NextPage = () => {
   )
 }
 
-
 export default NotFoundPage

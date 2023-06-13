@@ -17,13 +17,8 @@ export interface ICardProps {
   thumbnail: string;
   media: null | {};
 }
-// sr_detail/public_description
-// sr_detail/subscribers
-// sr_detail/created
-// sr_detail/display_name_prefixed
-// media/scrubber_media_url
-export const Card: FC<ICardProps> = ({title, author, num_comments, permalink, score, created, thumbnail, media, id}) =>  {
 
+export const Card: FC<ICardProps> = ({title, author, num_comments, permalink, score, created, thumbnail, media, id}) =>  {
   return (
     <li className={styles.card}>
       <CardInfo title={title} author={author} permalink={permalink} createdMS={created} id={id}/>

@@ -6,11 +6,6 @@ interface IPreviewProps {
   previewImgUrl: string;
   media: null | {};
 }
-// const imageStyle = {
-//   width: '100%',
-//   height: '100%',
-//   'object-fit': 'cover',
-// };
 
 export const Preview: FC<IPreviewProps> = ({previewImgUrl, media}) => {
   return (

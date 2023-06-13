@@ -23,24 +23,22 @@
 
 
 @media all and (min-width: 1024px) {
+  .title {
+    padding:     0 0 10px 0;
+    font-size:   20px;
+    line-height: 23px;
+  }
 
-
-.title {
-  padding:     0 0 10px 0;
-  font-size:   20px;
-  line-height: 23px;
-}
-
-.postLink {
-  -webkit-line-clamp: 1;
-}
+  .postLink {
+    -webkit-line-clamp: 1;
+  }
 }
 
 
 @media all and (min-width: 1024px) {
-.userLink {
-  padding: 0 0 0 5px;
-}
+  .userLink {
+    padding: 0 0 0 5px;
+  }
 }
 
 

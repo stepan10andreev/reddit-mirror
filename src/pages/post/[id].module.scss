@@ -1,6 +1,7 @@
 .post {
   padding: 15px 30px;
   margin: 0 auto;
+  position: relative;
   margin-top: 10%;
   display: flex;
   flex-direction: column;
@@ -11,6 +12,12 @@
   max-width: 1400px;
   border-radius: 5px;
   background-color: var(--greyD9);
+
+  & > button {
+    position: absolute;
+    top: - 5%;
+    left: 50%;
+  }
 }
 
 

@@ -11,5 +11,4 @@ const Page505: NextPage = () => {
   )
 }
 
-
 export default Page505
