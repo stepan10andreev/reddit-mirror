@@ -6,12 +6,15 @@
   display: flex;
   flex-flow: row wrap;
 }
+
 .card > *, .textContent > * {
   flex: 1 1 100%;
 }
+
 .card > * + * {
   padding: 13px 0 0;
 }
+
 .card:hover h2 a, .card:focus-within h2 a {
   color: var(--orange);
 }
@@ -23,11 +26,18 @@
     max-height: 107px;
     padding: 0 40px;
   }
+
+  .card > * + * {
+    padding: 0;
+  }
+
   .card > * {
     flex: 0 0;
   }
-  .card > * + * {
-    padding: 0;
+
+  .card div:nth-child(2) {
+    flex: 0 0;
+    flex-basis: 190px;
   }
 }
 
