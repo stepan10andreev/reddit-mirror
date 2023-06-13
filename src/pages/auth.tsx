@@ -10,7 +10,7 @@ import { BounceLoader } from "react-spinners";
 export const getServerSideProps: GetServerSideProps = async ({ query, req, res }: GetServerSidePropsContext) => {
   const response = await axios.post(
     'https://www.reddit.com/api/v1/access_token',
-    `grant_type=authorization_code&code=${query.code}&redirect_uri=http://localhost:3000/auth`,
+    `grant_type=authorization_code&code=${query.code}&redirect_uri=${process.env.API_URL}/auth`,
     {
       auth: { username: process.env.NEXT_PUBLIC_CLIENT_ID ? process.env.NEXT_PUBLIC_CLIENT_ID : '', password: process.env.PASSWORD_FOR_TOKEN ? process.env.PASSWORD_FOR_TOKEN : ''},
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
