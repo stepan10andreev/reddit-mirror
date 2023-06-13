@@ -14,7 +14,10 @@ export const getServerSideProps: GetServerSideProps = async ({ query, req, res }
   const token = getCookie('token', { req, res });
 
   if (!token) return {
-    props: {postsData: []},
+    redirect: {
+      destination: '/',
+      permanent: false,
+    },
   };
 
   const {data} = await axios.get(`https://oauth.reddit.com/api/info.json?id=t3_${query.id}`, {
