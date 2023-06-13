@@ -3,6 +3,8 @@ SPA-приложение, написанное на [Next.js](https://nextjs.org
 
 Приложение использует SSR (Server-Side Rendering) - все данные получаются на стороне сервера.
 
+Принцип Mobile First
+
 ## Описание
 Приложение представляет собой "Личный кабинет" с возможностью просмотреть новостную ленту из 25 лучших постов на [Reddit](https://www.reddit.com/).
 Для просмотра новостной ленты необходимо иметь активный аккаунт на [www.reddit.com](https://www.reddit.com/) и пройти авторизоваться на странице приложения.
@@ -19,7 +21,6 @@ SPA-приложение, написанное на [Next.js](https://nextjs.org
 - кнопка "Go Home" для Возварта на главную страницу
 
 ## Технологии
-
 - [Next.js v.13.4.4](https://nextjs.org/)
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
