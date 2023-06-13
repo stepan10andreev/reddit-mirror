@@ -17,7 +17,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, req, res }
     }
   )
   const data = response.data;
-  setCookie('token', data['access_token'], { req, res, /*maxAge: 60 * 60 */});
+  setCookie('token', data['access_token'], { req, res, maxAge: 60 * 60});
   return {
     props: {token: data['access_token']},
   }
@@ -32,7 +32,6 @@ const AuthPage: NextPage<IAuthPageProps> = ({ token }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    localStorage.setItem('token', JSON.stringify(token));
     dispatch(setToken(token));
     router.push('/')
   // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,7 +1,9 @@
 .userBox {
+  position: relative;
   cursor: pointer;
   display: flex;
   align-items: center;
+  margin-left: auto;
 }
 
 .userBox:hover span {
@@ -31,9 +33,52 @@
   display: none;
 }
 
+.authBlock {
+  position: absolute;
+  left: -350%;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 50%;
+  background-color: transparent;
+  text-align: center;
+
+  &:hover .arrow {
+    border-left: 50px solid #ff5800;
+  }
+
+  &:hover .authText {
+    color: #ff5800;
+  }
+
+  & .arrow {
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-left: 50px solid var(--orange);
+    border-bottom: 25px solid transparent;
+    transition: 0.3s;
+  }
+
+  & .authText {
+    font-size: 18px;
+    color: var(--orange);
+    transition: 0.3s;
+  }
+}
+
+
+
+
 @media all and (min-width: 1024px) {
   .username {
     display: flex;
+  }
+  .authBlock {
+    left: -100%;
   }
 }
 

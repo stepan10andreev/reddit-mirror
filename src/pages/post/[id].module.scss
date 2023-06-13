@@ -2,7 +2,7 @@
   padding: 15px 30px;
   margin: 0 auto;
   position: relative;
-  margin-top: 10%;
+  margin-top: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +17,7 @@
     position: absolute;
     top: -100px;
     left: 50%;
+    transform: translateX(-50%);
   }
 }
 

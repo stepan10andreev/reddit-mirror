@@ -18,6 +18,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetSe
   if (!token) return {
     props: {postsData: []},
   };
+
   const {data} = await axios.get('https://oauth.reddit.com/r/all/hot.json?sr_detail=true', {
     headers: { Authorization: `bearer ${token}` },
     params: {

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react"
 
 interface IUserData {
@@ -9,20 +10,17 @@ interface IUserData {
 export const useUserData =  () => {
   const [userData, setUserData] = useState<IUserData>({});
   const [isLoading, setLoading] = useState(false);
-
+  const [isAuth, setIsAuth] = useState(false);
   // const token = useAppSelector((state) => state.token);
 
   useEffect(() => {
-    let token = '';
 
-    const localtoken =  localStorage.getItem('token');
-    if (localtoken) {
-      token = JSON.parse(localtoken);
-    }
+    const token = getCookie('token')
 
     if(!token) return;
 
     setLoading(true);
+
     const getUserData = async () => {
       const response = await axios.get('https://oauth.reddit.com/api/v1/me', {
         headers: { Authorization: `bearer ${token}` }
@@ -32,12 +30,14 @@ export const useUserData =  () => {
 
       setUserData({ name: data.name, iconImg: data.snoovatar_img})
       setLoading(false);
+      setIsAuth(true)
     }
     getUserData();
   }, [])
 
   return {
     userData,
-    isLoading
+    isLoading,
+    isAuth
   }
 }
