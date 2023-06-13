@@ -35,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetSe
   const optimizatedData = getOptimizatedData(postsData, props)
 
   return {
-    props: {postsData: optimizatedData, data: postsData},
+    props: {postsData: optimizatedData},
   }
 }
 
