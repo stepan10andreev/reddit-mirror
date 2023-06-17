@@ -1,4 +1,7 @@
 # Зеркало Reddit c новостной лентой
+
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" width='30'/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" width='30'/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"  width='30'/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" width='30'/>
+
 SPA-приложение, написанное на [Next.js](https://nextjs.org/) с использованием [API Reddit](https://www.reddit.com/dev/api/) и протокола авторизации [OAuth2](https://github.com/reddit-archive/reddit/wiki/OAuth2).
 
 Приложение использует SSR (Server-Side Rendering) - все данные получаются на стороне сервера.
@@ -26,3 +29,6 @@ SPA-приложение, написанное на [Next.js](https://nextjs.org
 - [TypeScript](https://www.typescriptlang.org/)
 - [Sass](https://sass-scss.ru/)
 - [axios](https://axios-http.com/ru/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [cookies-next](https://github.com/andreizanik/cookies-next)
+- [react-spinners](https://www.davidhu.io/react-spinners/)
