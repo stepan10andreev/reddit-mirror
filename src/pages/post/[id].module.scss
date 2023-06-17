@@ -2,7 +2,7 @@
   padding: 15px 30px;
   margin: 0 auto;
   position: relative;
-  margin-top: 40%;
+  margin-top: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +25,7 @@
 @media all and (min-width: 756px) {
   .post  {
     flex-direction: row;
-    margin-top: 15%;
+    // margin-top: 15%;
   }
 }
 
